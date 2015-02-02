@@ -52,7 +52,8 @@ menu["GOOD PICTURES"] = "/good-pictures"
 menu["FIND TALENT"] = "/find_talent"
 menu["SAVE"] = "/save"
 menu["NETWORK"] = "/network"
-menu["NN Picks Buidup"] = "/nnpicks-shadow"
+menu["NN Picks Buildup"] = "/nnpicks-shadow"
+menu["EXIT"] = "/exit"
 
 categories = ["abstract", "animals", "black and white", "architecture", "concert", "family", "fashion", \
               "fine art", "photojournalism", "landscape", "macro", "nature", "people", "sport", "still life", "portrait", \
@@ -246,6 +247,11 @@ def max_distance(media_x, top_n):
 def main_page():
     return template('tpl_main_page', menu=menu)
 
+@route('/exit')
+def exit_program():
+    savex()
+    sys.stderr.close()
+    
     
 @route('/test') 
 def test():
