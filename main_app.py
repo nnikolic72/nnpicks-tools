@@ -23,10 +23,10 @@ from bottle import *
 picked_pic_db = 'db_nnpicks.txt'
 picked_pic_db_backup = 'db_nnpicks.txt.backup'
 picked_pic_db_debug = 'db_nnpicks_debug.txt'
-good_users_db = 'good_users.txt'
-good_users_db_debug = 'good_users_debug.txt'
-great_pics_db = "great_pics.txt"
-great_pics_db_debug = "great_pics_debug.txt"
+good_users_db = 'db_good_users.txt'
+good_users_db_debug = 'db_good_users_debug.txt'
+great_pics_db = "db_great_pics.txt"
+great_pics_db_debug = "db_great_pics_debug.txt"
 network_db = 'db_network.txt'
 network_db_backup = 'db_network.txt.backup'
 network_db_debug = 'db_network_debug.txt'

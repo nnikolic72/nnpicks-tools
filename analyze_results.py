@@ -31,12 +31,12 @@ if api.x_ratelimit_remaining == 0:
      print("Limit reached. Stopping!")
      sys.exit(0) 
          
-processed_users_db = "processed_users.txt"
-results_users_db = "results_users.txt"
-results_users_db_backup = "results_users.txt.backup"
+processed_users_db = "db_processed_users.txt"
+results_users_db = "db_results_users.txt"
+results_users_db_backup = "db_results_users.txt.backup"
 shutil.copyfile(results_users_db, results_users_db_backup)
-processed_users_db_csv = "processed_users.csv"
-results_users_db_csv = "results_users.csv"
+processed_users_db_csv = "db_processed_users.csv"
+results_users_db_csv = "db_results_users.csv"
 
 
 processed_users = {}

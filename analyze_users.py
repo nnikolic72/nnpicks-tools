@@ -13,13 +13,13 @@ import shutil
 debug_mode = 0
 
 
-processed_users_db = "processed_users.txt"
-results_users_db = "results_users.txt"
-good_users_db = 'good_users.txt'
-good_users_db_debug = 'good_users_debug.txt'
-processed_users_db_backup = "processed_users.txt.backup"
-results_users_db_backup = "results_users.txt.backup"
-good_users_db_backup = 'good_users.txt.backup'
+processed_users_db = "db_processed_users.txt"
+results_users_db = "db_results_users.txt"
+good_users_db = 'db_good_users.txt'
+good_users_db_debug = 'db_good_users_debug.txt'
+processed_users_db_backup = "db_processed_users.txt.backup"
+results_users_db_backup = "db_results_users.txt.backup"
+good_users_db_backup = 'db_good_users.txt.backup'
 
 categories = ["abstract", "animals", "black and white", "architecture", "concert", "family", "fashion", \
               "fine art", "photojournalism", "landscape", "macro", "nature", "people", "sport", "still life", "portrait", \
