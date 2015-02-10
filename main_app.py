@@ -429,7 +429,7 @@ def nnpicks_shadow():
     #filter out good users which are already followers
     
     i = 0
-    for key, value in good_users.iteritems():
+    for key, value in good_users.items():
         user_already_follower = False
         for x in nnpicks_followed_by:
             if x.id == key:
@@ -447,7 +447,7 @@ def nnpicks_shadow():
     #we have a list of users to ghost follow
 
     remove_inactive_ghost_users = []
-    for key, value in ghost_follow_good_users.iteritems():
+    for key, value in ghost_follow_good_users.items():
         
         ghost_media.clear()
         #print(ghost_media)
@@ -509,7 +509,7 @@ def nnpicks_shadow():
         ghost_follow_good_users.pop(x, None)
      
     #print(ghost_follow_good_users)        
-    for key, value in ghost_follow_good_users.iteritems():
+    for key, value in ghost_follow_good_users.items():
         print (value)
         
     return template('tpl_pic_like', disp_media = ghost_follow_good_users, api1 = api.x_ratelimit_remaining, api2 = api.x_ratelimit, menu=menu, get_url=url) 
@@ -650,7 +650,7 @@ def find_talent_cat(cat):
     #pick a category:
     picked_cat = cat
 
-    for key, value in good_users.iteritems():
+    for key, value in good_users.items():
         if picked_cat in value[8]:
             good_username = value[0]
             try:
@@ -750,7 +750,7 @@ def find_talent_cat(cat):
                 
     users_list = {}
 
-    for key, value in user_candidates.iteritems():
+    for key, value in user_candidates.items():
         users_list[value[0]] = value[1]
      
     sorted_user_candidates = sorted(users_list.items(), key=operator.itemgetter(1), reverse=True) 
@@ -768,7 +768,7 @@ def bestmedia(username):
     #normalize number of followers            
     max_followers = -1 
     min_followers = 99999999
-    for key, value in good_users.iteritems():
+    for key, value in good_users.items():
         f = value[4]
         if f > max_followers:
             max_followers = f
@@ -783,12 +783,12 @@ def bestmedia(username):
     '''
     if new_username != '':
         tr_max_media = tr_max_media_individual # analyze last X pics
-        for key, value in good_users.iteritems():
+        for key, value in good_users.items():
             if value[0] == new_username:
                 good_users = {}
                 good_users[key] = value
     '''    
-    for key, value in good_users.iteritems():
+    for key, value in good_users.items():
         if ((value[0] not in skip_user) and (value[0] == username)):
             
             print ("Processing user %s %s" % (key, value[0]))
@@ -826,7 +826,7 @@ def bestmedia(username):
                     
     best_media_by_user = {}
     best_media_sorted = best_media
-    for key, value in best_media_sorted.iteritems():
+    for key, value in best_media_sorted.items():
         if (new_username == "") or ((new_username != "") and (value[0] == new_username)):
             if value[0] not in best_media_by_user.keys():
                 #add new user
@@ -994,14 +994,14 @@ def network_list():
 @route('/network/discover')
 def network_discover():
     user_candidates = {}
-    for key, value in user_network.iteritems():
+    for key, value in user_network.items():
         followings = value[1]
         for x in followings:
             if x in user_candidates.keys():
                 user_candidates[x][1] += 1
             else:
                 user_candidates[x] = [x ,1]
-    user_candidates = sorted(user_candidates.iteritems(), reverse=True, key=lambda i: i[1][1])
+    user_candidates = sorted(user_candidates.items(), reverse=True, key=lambda i: i[1][1])
 
     return template('tpl_discover_network' , user_candidates=user_candidates, menu=menu, good_users=good_users, user_network=user_network)
     
@@ -1009,7 +1009,7 @@ def network_discover():
 @route('/network/pr')
 def calc_page_rank():
     gr = nx.DiGraph(followings=0)
-    for key, value in user_network.iteritems():
+    for key, value in user_network.items():
         username = key
         if key in good_users.keys():
             username = good_users[key][0]
@@ -1034,7 +1034,7 @@ def calc_page_rank():
     
     #pr = pagerank(gr, damping_factor=0.85, max_iterations=50, min_delta=1e-05)
     pr = nx.pagerank(gr, alpha=0.85, personalization=None, max_iter=50, tol=1e-08)
-    prl = sorted(pr.iteritems(), reverse=True, key=lambda i: i[1])
+    prl = sorted(pr.items(), reverse=True, key=lambda i: i[1])
     
     #print (pr)
     #nx.draw_networkx(gr)

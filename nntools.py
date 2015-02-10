@@ -70,7 +70,7 @@ except Exception as e:
         sys.exit(0)           
         
 def query_yes_no(question, default="yes"):
-    """Ask a yes/no question via raw_input() and return their answer.
+    """Ask a yes/no question via input() and return their answer.
 
     "question" is a string that is presented to the user.
     "default" is the presumed answer if the user just hits <Enter>.
@@ -92,7 +92,7 @@ def query_yes_no(question, default="yes"):
 
     while True:
         sys.stdout.write(question + prompt)
-        choice = raw_input().lower()
+        choice = input().lower()
         if default is not None and choice == '':
             return valid[default]
         elif choice in valid:
@@ -108,7 +108,7 @@ def pick_categories():
         buf = "[%s] %s  | " % (categories.index(x), x) 
         cat_list +=  buf
     print (cat_list)
-    chosen_cats = raw_input("        * Insert comma separated list of categories: ")
+    chosen_cats = input("        * Insert comma separated list of categories: ")
     chosen_cats = chosen_cats.strip()  
     chosen_cats_idx = chosen_cats.split(",")
     #print (chosen_cats_idx)
@@ -125,7 +125,7 @@ def pick_one_category():
         buf = "[%s] %s  | " % (categories.index(x), x) 
         cat_list +=  buf
     print (cat_list)
-    chosen_cats = raw_input("    * Pick a category: ")
+    chosen_cats = input("    * Pick a category: ")
     chosen_cats = chosen_cats.strip()  
 
     #print (chosen_cats_idx)
@@ -139,7 +139,7 @@ def get_room():
         buf = "[%s] %s  | " % (rooms.index(x), x) 
         rooms_list +=  buf
     print (rooms_list)
-    chosen_room = raw_input("        * Pick Virtual Theme Room: ")
+    chosen_room = input("        * Pick Virtual Theme Room: ")
     chosen_room = chosen_room.strip()  
     return rooms[int(chosen_room)]  
     
@@ -149,7 +149,7 @@ def get_exhibition():
         buf = "[%s] %s  | " % (exhibitions.index(x), x) 
         exhibition_list +=  buf
     print (exhibition_list)
-    chosen_exhibition = raw_input("        * Pick Exhibition: ")
+    chosen_exhibition = input("        * Pick Exhibition: ")
     chosen_exhibition = chosen_exhibition.strip()  
     return exhibitions[int(chosen_exhibition)]      
                     
@@ -175,7 +175,7 @@ while not exit_flag:
     print('[9] Save')
     print('[0] Exit')
 
-    user_choice = raw_input("Pick a menu item: ")
+    user_choice = input("Pick a menu item: ")
     user_choice = user_choice.strip()
     
     if user_choice == "0":
@@ -183,7 +183,7 @@ while not exit_flag:
         
     if user_choice == "1":
         # Add new candidate picture
-        picture_id = raw_input("    * Enter the picture ID: ")        
+        picture_id = input("    * Enter the picture ID: ")        
         picture_id = picture_id.strip()
 
         try:
@@ -237,7 +237,7 @@ while not exit_flag:
 
     if user_choice == "2":    
         # Mark approved picture
-        picture_id = raw_input("    * Enter the approved picture ID: ")        
+        picture_id = input("    * Enter the approved picture ID: ")        
         picture_id = picture_id.strip()        
  
         if picture_id in picked_pics.keys():
@@ -249,7 +249,7 @@ while not exit_flag:
 
     if user_choice == "3":    
         # Mark unapproved picture
-        picture_id = raw_input("    * Enter the unapproved picture ID: ")        
+        picture_id = input("    * Enter the unapproved picture ID: ")        
         picture_id = picture_id.strip()        
  
         if picture_id in picked_pics.keys():
@@ -261,7 +261,7 @@ while not exit_flag:
             
     if user_choice == "4":    
         # Request for feature sent for picture
-        picture_id = raw_input("    * Enter the requested for approval picture ID: ")        
+        picture_id = input("    * Enter the requested for approval picture ID: ")        
         picture_id = picture_id.strip()        
  
         if picture_id in picked_pics.keys():
@@ -274,7 +274,7 @@ while not exit_flag:
      
     if user_choice == "5":     
         # Add categories to picture
-        picture_id = raw_input("    * Enter the picture ID: ")        
+        picture_id = input("    * Enter the picture ID: ")        
         picture_id = picture_id.strip()
 
         if picture_id not in picked_pics.keys():
@@ -287,7 +287,7 @@ while not exit_flag:
     
     if user_choice == "6":        
         #Assign picture to exhibition
-        picture_id = raw_input("    * Enter the picture ID: ")        
+        picture_id = input("    * Enter the picture ID: ")        
         picture_id = picture_id.strip()
 
         if picture_id not in picked_pics.keys():
@@ -303,7 +303,7 @@ while not exit_flag:
     
     if user_choice == "P1":     
         # Add categories to picture
-        new_username = raw_input("    * Enter the photographer username: ")        
+        new_username = input("    * Enter the photographer username: ")        
         new_username = new_username.strip()
         
         new_user_search = api.user_search(q=new_username, count=1)
@@ -376,7 +376,7 @@ while not exit_flag:
         f.write("<body>\n")
         buf = "<h2>Report: Pictures in category %s</h2>" % (cat)
         f.write(buf + "<br>\n")     
-        for key, value in picked_pics.iteritems():
+        for key, value in picked_pics.items():
             if cat in value[4]:
                 buf = "Author: <a href='http://iconosquare.com/viewer.php#/user/%s/'>%s</a>" % (value[0], value[1])
                 f.write(buf + "<br>\n") 
@@ -415,7 +415,7 @@ while not exit_flag:
         f.write("<body>\n")
         buf = "<h2>Report: Pictures in category %s</h2>" % (cat)
         f.write(buf + "<br>\n")     
-        for key, value in picked_pics.iteritems():
+        for key, value in picked_pics.items():
             if (cat in value[4]) and (value[7] == 0):
                 buf = "Author: <a href='http://iconosquare.com/viewer.php#/user/%s/'>%s</a>" % (value[0], value[1])
                 f.write(buf + "<br>\n") 
@@ -453,7 +453,7 @@ while not exit_flag:
         f.write("<body>\n")
         buf = "<h2>Report: Pictures in exibition %s</h2>" % (exib)
         f.write(buf + "<br>\n")     
-        for key, value in picked_pics.iteritems():
+        for key, value in picked_pics.items():
             if (exib == value[6]):
                 buf = "Author: <a href='http://iconosquare.com/viewer.php#/user/%s/'>%s</a>" % (value[0], value[1])
                 f.write(buf + "<br>\n") 
@@ -496,7 +496,7 @@ if save == True:
     print("DATABASE SAVED!")
     
 #fix for good users categories
-#for key, value in good_users.iteritems():
+#for key, value in good_users.items():
 #    if len(value) == 8:
 #        good_users[key].append(categories[16])
     
