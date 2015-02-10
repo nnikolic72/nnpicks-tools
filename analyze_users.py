@@ -320,10 +320,11 @@ for key, value in user_candidates.iteritems():
 ### MAIN LOOP 
 #################################################################################
 for key, value in user_candidates.iteritems():
-    print (type(key))
-    print(key)
-    print (type(value))
-    print(value)
+    if debug_mode == 1:
+        print (type(key))
+        print(key)
+        print (type(value))
+        print(value)
         
     if value[2] != 0:
         ratio = value[3]/value[2]
