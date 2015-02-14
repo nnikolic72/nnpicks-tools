@@ -1,0 +1,20 @@
+﻿runs
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   db_good_users.txt
+#	modified:   db_good_users.txt.backup
+#	modified:   db_processed_users.txt
+#	modified:   db_processed_users.txt.backup
+#	modified:   db_results_users.txt
+#	modified:   db_results_users.txt.backup
+#	modified:   instagram_followers.html
+#	modified:   results_page.html
+#
+# Untracked files:
+#	oe450njp.d4h.txt
+#
+
